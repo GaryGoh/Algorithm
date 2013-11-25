@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<project name="distprog" basedir="." default="all">
+
+    <property name="src.dir" value="src"/>
+
+    <property name="lib.dir" value="lib"/>
+
+    <property name="build.dir" value="build"/>
+    <property name="class.dir" value="${build.dir}/classes"/>
+
+    <property name="main.class" value="Main"/>
+
+    <path id="classpath">
+        <fileset dir="${lib.dir}">
+            <include name="daj_port.jar"/>
+            <include name="awt_port.jar"/>
+        </fileset>
+        <pathelement location="${class.dir}"/>
+    </path>
+
+    <target name="all"  depends="clean,run"/>
+
+    <target name="run"  depends="build">
+        <java
+            classpathref="classpath"
+            classname="Main"
+            fork="true"/>
+    </target>
+
+    <target name="build">
+        <mkdir dir="${class.dir}"/>
+        <javac
+            srcdir="${src.dir}"
+            destdir="${class.dir}"
+            classpathref="classpath"
+            debug="true"
+            debuglevel="lines,source"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+</project>
