@@ -27,7 +27,7 @@ public class Main extends Application {
 
     @Override
     public void construct() {
-        makeNodeRing(8, 100, EdgeDirection.UNIDIRECTIONAL);
+        makeNodeRing(8, 100, EdgeDirection.BIDIRECTIONAL);
     }
 
     /**
